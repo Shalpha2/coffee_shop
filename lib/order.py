@@ -13,11 +13,7 @@ class Order:
 
     @customer.setter
     def customer(self, value):
-        from customer import Customer
-        if isinstance(value, Customer):
-            self._customer = value
-        else:
-            raise ValueError("Customer must be an instance of Customer.")
+        self._customer = value  # Removed type checking
 
     @property
     def coffee(self):
@@ -25,11 +21,7 @@ class Order:
 
     @coffee.setter
     def coffee(self, value):
-        from coffee import Coffee
-        if isinstance(value, Coffee):
-            self._coffee = value
-        else:
-            raise ValueError("Coffee must be an instance of Coffee.")
+        self._coffee = value  # Removed type checking
 
     @property
     def price(self):
@@ -41,4 +33,13 @@ class Order:
             self._price = value
         else:
             raise ValueError("Price must be a float between 1.0 and 10.0.")
+
+
+if __name__ == "__main__":
+    from customer import Customer
+    from coffee import Coffee
+    alice = Customer("Alice")
+    latte = Coffee("Latte")
+    order = Order(alice, latte, 4.5)
+    print(f"Order: {order.customer.name} ordered {order.coffee.name} for ${order.price}")
 

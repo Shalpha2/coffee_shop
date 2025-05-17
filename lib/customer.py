@@ -1,7 +1,8 @@
 class Customer:
     def __init__(self, name):
-        self._orders = []  # Store orders here
+
         self.name = name
+        self._orders = []
 
     @property
     def name(self):
@@ -18,7 +19,8 @@ class Customer:
         from order import Order
         new_order = Order(self, coffee, price)
         self._orders.append(new_order)
-        coffee._orders.append(new_order)
+        coffee.add_order(new_order)
+
         return new_order
 
     @property
@@ -40,5 +42,9 @@ class Customer:
             return None
 
         return max(spend_map, key=spend_map.get)
-
-
+if __name__ == "__main__":
+    from coffee import Coffee
+    alice = Customer("Alice")
+    latte = Coffee("Latte")
+    alice.create_order(latte, 4.5)
+    print(f"{alice.name} has ordered: {[order.coffee.name for order in alice.orders]}")
