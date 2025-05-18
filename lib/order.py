@@ -13,7 +13,7 @@ class Order:
 
     @customer.setter
     def customer(self, value):
-        from customer import Customer  # local import to avoid circular dependency
+        from customer import Customer  
         if not isinstance(value, Customer):
             raise TypeError("customer must be an instance of Customer")
         self._customer = value
