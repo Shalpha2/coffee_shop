@@ -34,11 +34,3 @@ class Coffee:
         return sum(order.price for order in self._orders) / len(self._orders)
 
 
-if __name__ == "__main__":
-    from customer import Customer
-    espresso = Coffee("Espresso")
-    bob = Customer("Bob")
-    bob.create_order(espresso, 3.0)
-    print(f"{espresso.name} orders count: {espresso.num_orders()}")
-    print(f"Average price: ${espresso.average_price():.2f}")
-
